@@ -13,6 +13,9 @@ public class AppManager {
     String browser;
     public WebDriver driver;
 
+    SelectHelper select;
+    ItemHelper item;
+
 
 
     public AppManager(String browser) {
@@ -38,13 +41,23 @@ public class AppManager {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
+        select = new SelectHelper(driver);
+        item = new ItemHelper(driver);
     }
 
     public void stop() {
         driver.quit();
     }
     // www
+
+
+    public SelectHelper getSelect() {
+        return select;
+    }
+
+    public ItemHelper getItem() {
+        return item;
+    }
 }
 
 
